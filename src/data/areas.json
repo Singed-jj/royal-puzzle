@@ -1,0 +1,27 @@
+[
+  {
+    "id": 1, "name": "지하주차장", "emoji": "🅿️", "levels": [1, 2, 3],
+    "decorations": [
+      { "id": "car", "name": "곰사원의 자동차", "starCost": 1, "emoji": "🚗" },
+      { "id": "exit_sign", "name": "비상구 표시등", "starCost": 1, "emoji": "🚨" },
+      { "id": "elevator", "name": "엘리베이터 수리", "starCost": 2, "emoji": "🛗" }
+    ]
+  },
+  {
+    "id": 2, "name": "사무실", "emoji": "💼", "levels": [4, 5, 6, 7],
+    "decorations": [
+      { "id": "desk", "name": "곰사원 책상", "starCost": 1, "emoji": "🪑" },
+      { "id": "plant", "name": "화분 놓기", "starCost": 1, "emoji": "🪴" },
+      { "id": "monitor", "name": "모니터 켜기", "starCost": 2, "emoji": "🖥️" },
+      { "id": "snack", "name": "간식 서랍", "starCost": 1, "emoji": "🍪" }
+    ]
+  },
+  {
+    "id": 3, "name": "회의실", "emoji": "🪑", "levels": [8, 9, 10],
+    "decorations": [
+      { "id": "whiteboard", "name": "화이트보드", "starCost": 1, "emoji": "📋" },
+      { "id": "projector", "name": "프로젝터", "starCost": 2, "emoji": "📽️" },
+      { "id": "window", "name": "탈출용 창문", "starCost": 2, "emoji": "🪟" }
+    ]
+  }
+]
