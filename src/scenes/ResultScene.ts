@@ -1,6 +1,7 @@
 import Phaser from 'phaser';
 import { GAME_WIDTH, GAME_HEIGHT } from '../config';
 import { PlayerProgress } from '../game/PlayerProgress';
+import { ParticleManager } from '../effects/ParticleManager';
 import levelsData from '../data/levels.json';
 
 interface ResultData {
@@ -30,6 +31,9 @@ export class ResultScene extends Phaser.Scene {
     if (data.success) {
       this.handleSuccess(data);
       this.createSuccessPanel(data);
+      // 성공 시 컨페티 이펙트
+      const particles = new ParticleManager(this);
+      particles.levelCompleteConfetti();
     } else {
       this.createFailurePanel(data);
     }
