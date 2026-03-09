@@ -2,6 +2,7 @@ import Phaser from 'phaser';
 import { Board } from './Board';
 import { TileType, TileData } from './types';
 import { TILE_SIZE, GRID_OFFSET_X, GRID_OFFSET_Y } from '../config';
+import { ParticleManager } from '../effects/ParticleManager';
 
 const TEXTURE_MAP: Record<TileType, string> = {
   [TileType.Coffee]: 'coffee',
@@ -15,6 +16,7 @@ export class BoardRenderer {
   private board: Board;
   private container: Phaser.GameObjects.Container;
   private sprites: (Phaser.GameObjects.Sprite | null)[][];
+  private particles: ParticleManager;
 
   constructor(scene: Phaser.Scene, board: Board) {
     this.scene = scene;
@@ -23,6 +25,7 @@ export class BoardRenderer {
     this.sprites = Array.from({ length: board.rows }, () =>
       Array(board.cols).fill(null),
     );
+    this.particles = new ParticleManager(scene);
   }
 
   private tileX(col: number): number {
@@ -142,6 +145,13 @@ export class BoardRenderer {
           if (completed >= total) resolve();
           continue;
         }
+
+        // 매치 폭발 파티클 이펙트
+        this.particles.matchExplosion(
+          this.tileX(tile.col),
+          this.tileY(tile.row),
+          tile.type,
+        );
 
         this.scene.tweens.add({
           targets: sprite,

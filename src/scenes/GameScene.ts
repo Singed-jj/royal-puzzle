@@ -1,10 +1,11 @@
 import Phaser from 'phaser';
-import { GAME_WIDTH } from '../config';
+import { GAME_WIDTH, GRID_OFFSET_X, GRID_OFFSET_Y, TILE_SIZE } from '../config';
 import { Board } from '../game/Board';
 import { BoardRenderer } from '../game/BoardRenderer';
 import { InputHandler } from '../game/InputHandler';
 import { Level, LevelData } from '../game/Level';
 import { TileType } from '../game/types';
+import { ParticleManager } from '../effects/ParticleManager';
 import levelsData from '../data/levels.json';
 
 const TILE_TYPE_NAMES: Record<number, string> = {
@@ -19,6 +20,7 @@ export class GameScene extends Phaser.Scene {
   private boardRenderer!: BoardRenderer;
   private inputHandler!: InputHandler;
   private level!: Level;
+  private particles!: ParticleManager;
 
   private movesText!: Phaser.GameObjects.Text;
   private objectiveTexts: Phaser.GameObjects.Text[] = [];
@@ -49,6 +51,9 @@ export class GameScene extends Phaser.Scene {
     // Create renderer
     this.boardRenderer = new BoardRenderer(this, this.board);
     this.boardRenderer.renderAll();
+
+    // Create particle manager
+    this.particles = new ParticleManager(this);
 
     // Create input handler
     this.inputHandler = new InputHandler(
@@ -160,8 +165,11 @@ export class GameScene extends Phaser.Scene {
 
   private async processMatches(): Promise<void> {
     let matches = this.board.findAllMatches();
+    let comboCount = 0;
 
     while (matches.length > 0) {
+      comboCount++;
+
       // Collect all matched tiles and count per type
       const allMatchedTiles = matches.flatMap((m) => m.tiles);
 
@@ -183,6 +191,16 @@ export class GameScene extends Phaser.Scene {
         seen.add(k);
         return true;
       });
+
+      // 콤보 카운터 표시 (2연쇄 이상)
+      if (comboCount >= 2 && uniqueTiles.length > 0) {
+        // 매치된 타일들의 중심 좌표에 콤보 텍스트 표시
+        const avgCol = uniqueTiles.reduce((s, t) => s + t.col, 0) / uniqueTiles.length;
+        const avgRow = uniqueTiles.reduce((s, t) => s + t.row, 0) / uniqueTiles.length;
+        const cx = GRID_OFFSET_X + avgCol * TILE_SIZE + TILE_SIZE / 2;
+        const cy = GRID_OFFSET_Y + avgRow * TILE_SIZE + TILE_SIZE / 2;
+        this.particles.comboCounter(cx, cy, comboCount);
+      }
 
       // Animate removal
       await this.boardRenderer.animateRemove(uniqueTiles);
