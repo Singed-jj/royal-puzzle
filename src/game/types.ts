@@ -51,3 +51,10 @@ export interface ObstacleData {
   col: number;
   hp: number;
 }
+
+export interface BoardLike {
+  readonly rows: number;
+  readonly cols: number;
+  getTile(row: number, col: number): TileData | null;
+  setTile(row: number, col: number, tile: TileData | null): void;
+}
