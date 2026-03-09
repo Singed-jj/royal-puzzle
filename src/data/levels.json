@@ -1,0 +1,101 @@
+[
+  {
+    "id": 1,
+    "area": "지하주차장",
+    "moves": 20,
+    "objectives": [
+      { "type": "collect", "tileType": 0, "count": 15 }
+    ],
+    "grid": { "rows": 7, "cols": 7 }
+  },
+  {
+    "id": 2,
+    "area": "지하주차장",
+    "moves": 18,
+    "objectives": [
+      { "type": "collect", "tileType": 1, "count": 20 }
+    ],
+    "grid": { "rows": 7, "cols": 7 }
+  },
+  {
+    "id": 3,
+    "area": "지하주차장",
+    "moves": 15,
+    "objectives": [
+      { "type": "collect", "tileType": 0, "count": 10 },
+      { "type": "clear_obstacle", "obstacleType": "box", "count": 3 }
+    ],
+    "grid": { "rows": 8, "cols": 8 }
+  },
+  {
+    "id": 4,
+    "area": "사무실",
+    "moves": 20,
+    "objectives": [
+      { "type": "collect", "tileType": 2, "count": 25 }
+    ],
+    "grid": { "rows": 8, "cols": 8 }
+  },
+  {
+    "id": 5,
+    "area": "사무실",
+    "moves": 18,
+    "objectives": [
+      { "type": "clear_obstacle", "obstacleType": "box", "count": 5 },
+      { "type": "clear_obstacle", "obstacleType": "cabinet", "count": 2 }
+    ],
+    "grid": { "rows": 8, "cols": 8 }
+  },
+  {
+    "id": 6,
+    "area": "사무실",
+    "moves": 22,
+    "objectives": [
+      { "type": "collect", "tileType": 3, "count": 30 },
+      { "type": "clear_obstacle", "obstacleType": "printer", "count": 2 }
+    ],
+    "grid": { "rows": 8, "cols": 8 }
+  },
+  {
+    "id": 7,
+    "area": "사무실",
+    "moves": 16,
+    "objectives": [
+      { "type": "collect", "tileType": 0, "count": 15 },
+      { "type": "collect", "tileType": 1, "count": 15 }
+    ],
+    "grid": { "rows": 8, "cols": 8 }
+  },
+  {
+    "id": 8,
+    "area": "회의실",
+    "moves": 25,
+    "objectives": [
+      { "type": "clear_obstacle", "obstacleType": "cabinet", "count": 5 },
+      { "type": "clear_obstacle", "obstacleType": "box", "count": 4 }
+    ],
+    "grid": { "rows": 9, "cols": 9 }
+  },
+  {
+    "id": 9,
+    "area": "회의실",
+    "moves": 20,
+    "objectives": [
+      { "type": "collect", "tileType": 2, "count": 20 },
+      { "type": "clear_obstacle", "obstacleType": "splash", "count": 3 },
+      { "type": "clear_obstacle", "obstacleType": "printer", "count": 2 }
+    ],
+    "grid": { "rows": 9, "cols": 9 }
+  },
+  {
+    "id": 10,
+    "area": "회의실",
+    "moves": 18,
+    "objectives": [
+      { "type": "collect", "tileType": 0, "count": 20 },
+      { "type": "collect", "tileType": 3, "count": 20 },
+      { "type": "clear_obstacle", "obstacleType": "cabinet", "count": 4 }
+    ],
+    "grid": { "rows": 9, "cols": 9 }
+  }
+]
